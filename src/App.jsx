@@ -3,33 +3,35 @@ import { useState } from "react";
 import "./Index.css";
 import Pokemon from "./Pokemon";
 
-// Tasks
-// - Randomize positions at start and after every selection
-//     - Create an array of the Pokemon and use map with pop or shift???
+// TODO
 // - Create a state that gets passed into each Pokemon as selected or unselected
+// - Modify pokemonStates when they're clicked
 
 function App() {
-  // We can possibly use a dictionary to control wether each card has been
-  // selected or not
-  function shuffle(array) {
-    let currentIndex = array.length;
-
-    while (currentIndex != 0) {
-      // Get random index
-      let randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--; // Reduce to avoid duplicates and leave while loop
-
-      // Swap the randomIndex with the current Index
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
-  }
-
-  function printName(name) {
-    console.log(name);
-  }
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [pokemonState, setPokemonState] = useState({
+    mewtwo: false,
+    pikachu: false,
+    suicune: false,
+    charizard: false,
+    rayquaza: false,
+    gengar: false,
+    blaziken: false,
+    greninja: false,
+    garchomp: false,
+    decidueye: false,
+    metagross: false,
+    wobbuffet: false,
+    arcanine: false,
+    snorlax: false,
+    venusaur: false,
+    dialga: false,
+    nidoking: false,
+    dragonite: false,
+    alakazam: false,
+    torterra: false,
+  });
 
   const pokemonArr = [
     "mewtwo",
@@ -54,33 +56,43 @@ function App() {
     "torterra",
   ];
 
-  const [pokemonState, setPokemonState] = useState({
-    mewtwo: false,
-    pikachu: false,
-    suicune: false,
-    charizard: false,
-    rayquaza: false,
-    gengar: false,
-    blaziken: false,
-    greninja: false,
-    garchomp: false,
-    decidueye: false,
-    metagross: false,
-    wobbuffet: false,
-    arcanine: false,
-    snorlax: false,
-    venusaur: false,
-    dialga: false,
-    nidoking: false,
-    dragonite: false,
-    alakazam: false,
-    torterra: false,
-  });
+  function handleClick(name) {
+    if (pokemonState[name] == false) {
+      setCurrentScore(currentScore + 1);
+
+      if (currentScore > bestScore) {
+        setBestScore(bestScore + 1);
+      }
+
+      setPokemonState({
+        ...pokemonState,
+        name: true,
+      });
+    }
+
+    console.log(pokemonState);
+  }
+
+  function shuffle(array) {
+    let currentIndex = array.length;
+
+    while (currentIndex != 0) {
+      // Get random index
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--; // Reduce to avoid duplicates and leave while loop
+
+      // Swap the randomIndex with the current Index
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+  }
 
   shuffle(pokemonArr);
 
   const listItems = pokemonArr.map((name) => (
-    <div key={name} onClick={() => printName(name)}>
+    <div key={name} onClick={() => handleClick(name)}>
       <Pokemon name={name} />
     </div>
   ));
