@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./Index.css";
+import Pokemon from "./Pokemon";
+
+// Randomize positions at start and after every selection
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="grid-container">
+        <Pokemon name="mewtwo" />
+        <Pokemon name="pikachu" />
+        <Pokemon name="suicune" />
+        <Pokemon name="charizard" />
+        <Pokemon name="rayquaza" />
+
+        <Pokemon name="gengar" />
+        <Pokemon name="blaziken" />
+        <Pokemon name="greninja" />
+        <Pokemon name="garchomp" />
+        <Pokemon name="decidueye" />
+
+        <Pokemon name="metagross" />
+        <Pokemon name="wobbuffet" />
+        <Pokemon name="arcanine" />
+        <Pokemon name="snorlax" />
+        <Pokemon name="venusaur" />
+
+        <Pokemon name="dialga" />
+        <Pokemon name="nidoking" />
+        <Pokemon name="dragonite" />
+        <Pokemon name="alakazam" />
+        <Pokemon name="torterra" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
