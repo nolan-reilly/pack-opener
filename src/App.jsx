@@ -11,6 +11,26 @@ import Pokemon from "./Pokemon";
 function App() {
   // We can possibly use a dictionary to control wether each card has been
   // selected or not
+  function shuffle(array) {
+    let currentIndex = array.length;
+
+    while (currentIndex != 0) {
+      // Get random index
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--; // Reduce to avoid duplicates and leave while loop
+
+      // Swap the randomIndex with the current Index
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+  }
+
+  function handleClick() {
+    console.log("Clicked Brother");
+  }
+
   const pokemonArr = [
     "mewtwo",
     "pikachu",
@@ -57,7 +77,13 @@ function App() {
     torterra: false,
   });
 
-  const listItems = pokemonArr.map((name) => <Pokemon name={name} />);
+  shuffle(pokemonArr);
+
+  const listItems = pokemonArr.map((name) => (
+    <div onClick={handleClick}>
+      <Pokemon name={name} />
+    </div>
+  ));
 
   return (
     <>
