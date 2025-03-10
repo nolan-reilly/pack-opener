@@ -13,7 +13,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 32px;
+  gap: 24px;
 }
 
 .card {
@@ -39,11 +39,15 @@
 }
 
 .flex-col {
-  flex-direction: col;
+  flex-direction: column;
 }
 
 .justify-center {
   justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .center {
@@ -70,4 +74,12 @@
   .grid-container {
     grid-template-columns: 1fr;
   }
+}
+
+.margin-bottom-24 {
+  margin-bottom: 24px;
+}
+
+.gap-16 {
+  gap: 16px;
 }
