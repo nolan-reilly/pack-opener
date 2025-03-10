@@ -27,8 +27,8 @@ function App() {
     }
   }
 
-  function handleClick() {
-    console.log("Clicked Brother");
+  function printName(name) {
+    console.log(name);
   }
 
   const pokemonArr = [
@@ -80,7 +80,7 @@ function App() {
   shuffle(pokemonArr);
 
   const listItems = pokemonArr.map((name) => (
-    <div onClick={handleClick}>
+    <div key={name} onClick={() => printName(name)}>
       <Pokemon name={name} />
     </div>
   ));
