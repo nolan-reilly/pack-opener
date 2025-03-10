@@ -1,11 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./Index.css";
 import Pokemon from "./Pokemon";
-
-// TODO
-// - Create a state that gets passed into each Pokemon as selected or unselected
-// - Modify pokemonStates when they're clicked
 
 function App() {
   const [currentScore, setCurrentScore] = useState(0);
@@ -56,21 +52,46 @@ function App() {
     "torterra",
   ];
 
-  function handleClick(name) {
-    if (pokemonState[name] == false) {
-      setCurrentScore(currentScore + 1);
+  // Maybe don't need best score
+  useEffect(() => {
+    if (currentScore > bestScore) {
+      setBestScore(bestScore + 1);
+    }
+  }, [currentScore, bestScore]);
 
-      if (currentScore > bestScore) {
-        setBestScore(bestScore + 1);
-      }
+  function handleClick(name) {
+    if (pokemonState[name] === false) {
+      setCurrentScore(currentScore + 1);
 
       setPokemonState({
         ...pokemonState,
-        name: true,
+        [name]: true, // To use values passed in we must use brackets
+      });
+    } else {
+      setCurrentScore(0);
+      setPokemonState({
+        mewtwo: false,
+        pikachu: false,
+        suicune: false,
+        charizard: false,
+        rayquaza: false,
+        gengar: false,
+        blaziken: false,
+        greninja: false,
+        garchomp: false,
+        decidueye: false,
+        metagross: false,
+        wobbuffet: false,
+        arcanine: false,
+        snorlax: false,
+        venusaur: false,
+        dialga: false,
+        nidoking: false,
+        dragonite: false,
+        alakazam: false,
+        torterra: false,
       });
     }
-
-    console.log(pokemonState);
   }
 
   function shuffle(array) {
@@ -110,8 +131,8 @@ function App() {
           </div>
 
           <div>
-            <p>Score: 0</p>
-            <p>Best Score: 0</p>
+            <p>Score: {currentScore}</p>
+            <p>Best Score: {bestScore}</p>
           </div>
         </div>
 
