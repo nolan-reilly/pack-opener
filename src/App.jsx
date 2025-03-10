@@ -1,12 +1,67 @@
+import { useState } from "react";
+
 import "./Index.css";
 import Pokemon from "./Pokemon";
 
-// Randomize positions at start and after every selection
+// Tasks
+// - Randomize positions at start and after every selection
+//     - Create an array of the Pokemon and use map with pop or shift???
+// - Create a state that gets passed into each Pokemon as selected or unselected
 
 function App() {
+  // We can possibly use a dictionary to control wether each card has been
+  // selected or not
+  const pokemonArr = [
+    "mewtwo",
+    "pikachu",
+    "suicune",
+    "charizard",
+    "rayquaza",
+    "gengar",
+    "blaziken",
+    "greninja",
+    "garchomp",
+    "decidueye",
+    "metagross",
+    "wobbuffet",
+    "arcanine",
+    "snorlax",
+    "venusaur",
+    "dialga",
+    "nidoking",
+    "dragonite",
+    "alakazam",
+    "torterra",
+  ];
+
+  const [pokemonState, setPokemonState] = useState({
+    mewtwo: false,
+    pikachu: false,
+    suicune: false,
+    charizard: false,
+    rayquaza: false,
+    gengar: false,
+    blaziken: false,
+    greninja: false,
+    garchomp: false,
+    decidueye: false,
+    metagross: false,
+    wobbuffet: false,
+    arcanine: false,
+    snorlax: false,
+    venusaur: false,
+    dialga: false,
+    nidoking: false,
+    dragonite: false,
+    alakazam: false,
+    torterra: false,
+  });
+
+  const listItems = pokemonArr.map((name) => <Pokemon name={name} />);
+
   return (
     <>
-      <div className="container">
+      <div className="container content-spacing">
         <div className="flex flex-row space-between">
           <div className="margin-bottom-24 flex flex-col gap-16">
             <h1>Pokemon Memory Game</h1>
@@ -22,31 +77,7 @@ function App() {
           </div>
         </div>
 
-        <div className="grid-container">
-          <Pokemon name="mewtwo" />
-          <Pokemon name="pikachu" />
-          <Pokemon name="suicune" />
-          <Pokemon name="charizard" />
-          <Pokemon name="rayquaza" />
-
-          <Pokemon name="gengar" />
-          <Pokemon name="blaziken" />
-          <Pokemon name="greninja" />
-          <Pokemon name="garchomp" />
-          <Pokemon name="decidueye" />
-
-          <Pokemon name="metagross" />
-          <Pokemon name="wobbuffet" />
-          <Pokemon name="arcanine" />
-          <Pokemon name="snorlax" />
-          <Pokemon name="venusaur" />
-
-          <Pokemon name="dialga" />
-          <Pokemon name="nidoking" />
-          <Pokemon name="dragonite" />
-          <Pokemon name="alakazam" />
-          <Pokemon name="torterra" />
-        </div>
+        <div className="grid-container">{listItems}</div>
       </div>
     </>
   );

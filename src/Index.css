@@ -6,8 +6,8 @@
 }
 
 .container {
-  width: 80%;
-  margin: 0 auto;
+  width: 75%;
+  margin: 32px auto;
 }
 
 .grid-container {
@@ -23,7 +23,7 @@
 }
 
 .pokemon-img {
-  width: 160px;
+  width: 96px;
 }
 
 .text-center {
